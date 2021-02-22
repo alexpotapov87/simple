@@ -1,13 +1,6 @@
 name: Simple Pipeline
 
-on:
-  push: 
-    branches:
-      - 'master'
-  pull_request:
-    branches: 
-      - 'master'
-
+on: [push]
 
 jobs:
   docker:
