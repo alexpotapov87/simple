@@ -28,15 +28,15 @@ resource "aws_ecs_task_definition" "simple_task" {
           "hostPort": 8082
         }
       ],
-      "memory": 128,
-      "cpu": 100
+      "memory ": 512,
+      "cpu ": 256
     }
   ]
   DEFINITION
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
-  memory                   = 128
-  cpu                      = 100
+  memory                   = 512
+  cpu                      = 256
   execution_role_arn       = "${aws_iam_role.ecsTaskExecutionRole.arn}"
 }
 
@@ -69,7 +69,7 @@ resource "aws_ecs_service" "simple_service" {
   desired_count   = 1
 
   network_configuration {
-    subnets          = ["${aws_default_subnet.default_subnet_a.id}"]
+    subnets          = ["${aws_default_subnet.default_subnet_a.id},${aws_default_subnet.default_subnet_c.id}"]
     assign_public_ip = false
   }
 }
