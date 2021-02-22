@@ -1,4 +1,4 @@
-resource "aws_alb" "simple_load_balancer" {
+resource "aws_lb" "simple_load_balancer" {
   name               = "test-lb-tf" # Naming our load balancer
   load_balancer_type = "application"
   subnets = [ # Referencing the default subnets
