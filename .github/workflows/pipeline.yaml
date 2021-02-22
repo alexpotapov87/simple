@@ -30,8 +30,6 @@ jobs:
         with:
           push: true
           tags: alexpotapov87/simple:latest
-      - name: Image digest
-        run: echo ${{ steps.docker_build.outputs.digest }}
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
       - name: CI Terraform Format
