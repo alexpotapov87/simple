@@ -32,6 +32,10 @@ jobs:
   terraform:
     name: 'Terraform'
     runs-on: ubuntu-latest
+    with:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET }}
+
     steps:    
       - name: Checkout
         uses: actions/checkout@v2
@@ -43,9 +47,6 @@ jobs:
       - name: Terraform Init
         id: init
         run: terraform init
-        with:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET }}
       - name: Terraform Plan
         id: plan
         if: github.event_name == 'pull_request'
